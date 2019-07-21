@@ -61,6 +61,12 @@ namespace PeterLeslieMorris.Blazor.Validation
 				validatorsByType.Select(x => new KeyValuePair<Type, IEnumerable<Type>>(x.Key, x.Value))
 			);
 
+			validatorsByType
+				.SelectMany(x => x.Value)
+				.Distinct()
+				.ToList()
+				.ForEach(x => services.AddScoped(x));
+
 			services.AddSingleton(repository);
 		}
 	}
