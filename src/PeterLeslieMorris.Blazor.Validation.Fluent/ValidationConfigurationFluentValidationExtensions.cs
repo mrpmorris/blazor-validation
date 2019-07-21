@@ -43,8 +43,6 @@ namespace PeterLeslieMorris.Blazor.Validation
 					.Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>))
 				);
 
-			System.Diagnostics.Debug.WriteLine("Found " + validatorTypesInAssembly.Count());
-
 			foreach(Type validatorType in validatorTypesInAssembly)
 			{
 				Type typeToValidate = validatorType.BaseType.GetGenericArguments()[0];
