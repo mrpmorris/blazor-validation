@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Fl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnnotationsValidationSample", "..\samples\01-DataAnnotationsValidation\DataAnnotationsValidationSample\DataAnnotationsValidationSample.csproj", "{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAnnotationsValidationSample", "..\samples\01-DataAnnotationsValidation\DataAnnotationsValidationSample\DataAnnotationsValidationSample.csproj", "{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-DataAnnotations", "01-DataAnnotations", "{C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-FluentValidation", "02-FluentValidation", "{F3597B78-7306-40ED-8FF8-B2C6B1ED9539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{9C69C225-21A1-497B-8049-352A464C6627}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{9C69C225-21A1-497B-8049-352A464C6627}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{451C13F4-69B5-4AB3-B1A8-008A112DE521}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{07CE8E70-DF46-4A93-864B-1BBB64E52426} = {451C13F4-69B5-4AB3-B1A8-008A112DE521}
+		{9E544B03-8471-4C99-8405-C6D55ABAEFD6} = {451C13F4-69B5-4AB3-B1A8-008A112DE521}
 		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4} = {C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3}
 		{C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3} = {D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}
 		{F3597B78-7306-40ED-8FF8-B2C6B1ED9539} = {D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}

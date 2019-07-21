@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>mrpmorris.pfx</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>0.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
-    <Version>0.2.0.0-pre</Version>
+    <AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>0.4.0.0</AssemblyVersion>
+    <FileVersion>0.4.0.0</FileVersion>
+    <Version>0.4.0.0-pre</Version>
     <Description>FluentValidation for Blazor</Description>
     <Copyright>Peter Morris</Copyright>
     <PackageLicenseFile>LICENCE</PackageLicenseFile>
@@ -15,10 +15,12 @@
     <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
     <PackageTags>Blazor FluentValidation</PackageTags>
     <DelaySign>false</DelaySign>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="PeterLeslieMorris.Blazor.Validation" Version="0.4.0-pre" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +28,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
   </ItemGroup>
 
 </Project>
