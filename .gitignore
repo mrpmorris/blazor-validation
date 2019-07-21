@@ -1,4 +1,4 @@
-publish.bat
+*.bat
 **/PublishProfiles/**
 secrets.txt
 
