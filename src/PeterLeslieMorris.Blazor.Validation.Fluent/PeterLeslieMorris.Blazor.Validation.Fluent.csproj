@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>mrpmorris.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Version>0.2.0.0-pre</Version>
+    <Description>FluentValidation for Blazor</Description>
+    <Copyright>Peter Morris</Copyright>
+    <PackageLicenseFile>LICENCE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
+    <PackageTags>Blazor FluentValidation</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="PeterLeslieMorris.Blazor.Validation" Version="0.2.0-pre" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENCE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

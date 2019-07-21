@@ -21,7 +21,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 			foreach (Type providerType in Repository.All)
 			{
 				IValidationProvider validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
-				validationProvider.InitializeEditContext(CurrentEditContext);
+				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider);
 			}
 		}
 	}
