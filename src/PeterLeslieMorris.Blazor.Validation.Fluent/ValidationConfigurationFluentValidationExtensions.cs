@@ -5,31 +5,45 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PeterLeslieMorris.Blazor.Validation
 {
-	public static class ValidationConfigurationDataAnnotationsExtensions
+	public static class ValidationConfigurationFluentValidationExtensions
 	{
-		public static ValidationConfiguration AddDataAnnotationsValidation(this ValidationConfiguration config, params Assembly[] assembliesToScan)
+		public static ValidationConfiguration AddFluentValidation(this ValidationConfiguration config, Assembly assemblyToScan, params Assembly[] additionalAssembliesToScan)
 		{
-			ScanForValidators(config.Services, assembliesToScan);
+			if (assemblyToScan == null)
+				throw new ArgumentNullException(nameof(assemblyToScan));
+
+			var allAssembliesToScan = new List<Assembly>();
+			allAssembliesToScan.Add(assemblyToScan);
+			if (additionalAssembliesToScan != null)
+				allAssembliesToScan.AddRange(additionalAssembliesToScan);
+
+			ScanForValidators(config.Services, allAssembliesToScan);
 			config.Services.AddScoped<FluentValidationValidatorProvider>();
 			config.Repository.Add(typeof(FluentValidationValidatorProvider));
 			return config;
 		}
 
-		private static void ScanForValidators(IServiceCollection services, Assembly[] assembliesToScan)
+		private static void ScanForValidators(IServiceCollection services, IEnumerable<Assembly> assembliesToScan)
 		{
-			if (assembliesToScan == null || assembliesToScan.Length == 0)
+			if (assembliesToScan == null || !assembliesToScan.Any())
 				throw new ArgumentNullException(nameof(assembliesToScan));
 
 			var validatorsByType = new Dictionary<Type, List<Type>>();
 
 			IEnumerable<Type> validatorTypesInAssembly = assembliesToScan
-				.SelectMany(x => x.GetExportedTypes())
-				.Where(x => typeof(IValidator<>).IsAssignableFrom(x))
+				.SelectMany(x => x.GetTypes())
 				.Where(x => x.IsClass)
-				.Where(x => !x.IsAbstract && !x.IsGenericTypeDefinition);
+				.Where(x => !x.IsAbstract && !x.IsGenericTypeDefinition)
+				.Where(x => 
+					x.GetInterfaces()
+					.Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IValidator<>))
+				);
+
+			System.Diagnostics.Debug.WriteLine("Found " + validatorTypesInAssembly.Count());
 
 			foreach(Type validatorType in validatorTypesInAssembly)
 			{

@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>mrpmorris.pfx</AssemblyOriginatorKeyFile>
     <AssemblyVersion>0.2.0.0</AssemblyVersion>
     <FileVersion>1.2.0.0</FileVersion>
@@ -14,11 +14,11 @@
     <PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
     <PackageTags>Blazor FluentValidation</PackageTags>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.4.0" />
-    <PackageReference Include="PeterLeslieMorris.Blazor.Validation" Version="0.2.0-pre" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +26,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
   </ItemGroup>
 
 </Project>

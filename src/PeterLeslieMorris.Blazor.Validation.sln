@@ -5,7 +5,17 @@ VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Validation", "PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj", "{07CE8E70-DF46-4A93-864B-1BBB64E52426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeterLeslieMorris.Blazor.Validation.Fluent", "PeterLeslieMorris.Blazor.Validation.Fluent\PeterLeslieMorris.Blazor.Validation.Fluent.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Validation.Fluent", "PeterLeslieMorris.Blazor.Validation.Fluent\PeterLeslieMorris.Blazor.Validation.Fluent.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnnotationsValidationSample", "..\samples\01-DataAnnotationsValidation\DataAnnotationsValidationSample\DataAnnotationsValidationSample.csproj", "{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-DataAnnotations", "01-DataAnnotations", "{C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-FluentValidation", "02-FluentValidation", "{F3597B78-7306-40ED-8FF8-B2C6B1ED9539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{9C69C225-21A1-497B-8049-352A464C6627}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +31,23 @@ Global
 		{9E544B03-8471-4C99-8405-C6D55ABAEFD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E544B03-8471-4C99-8405-C6D55ABAEFD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E544B03-8471-4C99-8405-C6D55ABAEFD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C69C225-21A1-497B-8049-352A464C6627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C69C225-21A1-497B-8049-352A464C6627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C69C225-21A1-497B-8049-352A464C6627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C69C225-21A1-497B-8049-352A464C6627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B756D20-10A2-4F68-89CC-CB3F201F4CE4} = {C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3}
+		{C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3} = {D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}
+		{F3597B78-7306-40ED-8FF8-B2C6B1ED9539} = {D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}
+		{9C69C225-21A1-497B-8049-352A464C6627} = {F3597B78-7306-40ED-8FF8-B2C6B1ED9539}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D95C3764-54F3-40FD-8A52-CB4D1F984806}
