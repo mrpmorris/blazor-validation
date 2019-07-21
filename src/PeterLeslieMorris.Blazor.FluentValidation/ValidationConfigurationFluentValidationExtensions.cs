@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using PeterLeslieMorris.Blazor.Validation.Fluent;
+using PeterLeslieMorris.Blazor.FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;

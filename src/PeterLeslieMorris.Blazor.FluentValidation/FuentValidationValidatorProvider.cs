@@ -2,13 +2,12 @@
 using FluentValidation.Internal;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Components.Forms;
+using PeterLeslieMorris.Blazor.Validation;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace PeterLeslieMorris.Blazor.Validation.Fluent
+namespace PeterLeslieMorris.Blazor.FluentValidation
 {
 	public class FluentValidationValidatorProvider : IValidationProvider
 	{
@@ -76,7 +75,7 @@ namespace PeterLeslieMorris.Blazor.Validation.Fluent
 			var fluentValidationContext = 
 				new ValidationContext(
 					instanceToValidate: fieldIdentifier.Model,
-					propertyChain: new FluentValidation.Internal.PropertyChain(),
+					propertyChain: new PropertyChain(),
 					validatorSelector: new MemberNameValidatorSelector(propertiesToValidate)
 				);
 

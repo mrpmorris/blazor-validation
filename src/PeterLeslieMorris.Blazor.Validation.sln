@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Validation", "PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj", "{07CE8E70-DF46-4A93-864B-1BBB64E52426}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Validation.Fluent", "PeterLeslieMorris.Blazor.Validation.Fluent\PeterLeslieMorris.Blazor.Validation.Fluent.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.FluentValidation", "PeterLeslieMorris.Blazor.FluentValidation\PeterLeslieMorris.Blazor.FluentValidation.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}"
 EndProject

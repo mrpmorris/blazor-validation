@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.Validation.Fluent\PeterLeslieMorris.Blazor.Validation.Fluent.csproj" />
+    <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.FluentValidation\PeterLeslieMorris.Blazor.FluentValidation.csproj" />
     <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
   </ItemGroup>
 
