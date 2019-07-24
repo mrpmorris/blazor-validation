@@ -27,15 +27,19 @@ services.AddFormValidation(config =>
 
 The standard Blazor components `<ValidationSummary>` and `<ValidationMessage>` will now work with your selected validation options.
 
-
-
 ### Sample projects
 More sample projects will be added as the framework develops.
   - [Data Annotations Sample] - Shows how to use DataAnnotations to validate.
   - [FluentValidation Sample] - Shows how to use the [FluentValidation.com] library to validate.
 
+## What's new
+### New in 0.5.0
+ - Upgraded to Blazor Preview 7
+### New in 0.4.0
+ - Initial public release
+
    [Microsoft aspdotnet blazor project]: <https://github.com/aspnet/Blazor>
    [Blazor-Validation]: <https://www.nuget.org/packages/PeterLeslieMorris.Blazor.Validation/>
    [Blazor-FluentValidation]: <https://www.nuget.org/packages/PeterLeslieMorris.Blazor.FluentValidation/>
    [Data Annotations Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/01-DataAnnotationsValidation/>
-   [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/02-FluentValidation/>>
+   [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/02-FluentValidation/>
