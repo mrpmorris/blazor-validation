@@ -10,7 +10,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 		[Inject] IValidationProviderRepository Repository { get; set; }
 		[Inject] IServiceProvider ServiceProvider { get; set; }
 
-		protected override void OnInit()
+		protected override void OnInitialized()
 		{
 			if (CurrentEditContext == null)
 			{
@@ -20,7 +20,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 			}
 			foreach (Type providerType in Repository.All)
 			{
-				IValidationProvider validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
+				var validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
 				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider);
 			}
 		}

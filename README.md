@@ -33,6 +33,8 @@ More sample projects will be added as the framework develops.
   - [FluentValidation Sample] - Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+### New in 0.6.0
+ - Upgraded to Blazor Preview 8
 ### New in 0.5.0
  - Upgraded to Blazor Preview 7
 ### New in 0.4.0

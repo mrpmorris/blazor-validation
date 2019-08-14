@@ -8,7 +8,7 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>PeterLeslieMorris.Blazor.Validation</PackageId>
-    <Version>0.5.0.0-pre</Version>
+    <Version>0.6.0.0-pre</Version>
     <Authors>Peter Morris</Authors>
     <Company>Peter Morris</Company>
     <Product>PeterLeslieMorris.Blazor.Validation</Product>
@@ -19,9 +19,9 @@
     <PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
     <PackageTags>Blazor Validation</PackageTags>
-    <AssemblyVersion>0.5.0.0</AssemblyVersion>
-    <FileVersion>0.4.0.0</FileVersion>
-    <SignAssembly>true</SignAssembly>
+    <AssemblyVersion>0.6.0.0</AssemblyVersion>
+    <FileVersion>0.6.0.0</FileVersion>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
@@ -34,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="3.0.0-preview7.19365.7" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\LICENCE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -46,6 +42,10 @@
 
   <ItemGroup>
     <Folder Include="content\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0-preview8.19405.7" />
   </ItemGroup>
 
 </Project>
