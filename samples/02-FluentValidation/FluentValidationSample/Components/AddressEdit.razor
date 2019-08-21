@@ -1,0 +1,89 @@
+﻿@using Models
+
+<div class="col-12">
+	<div class="card">
+		@if (!string.IsNullOrEmpty(Title))
+		{
+			<div class="card-header">
+				@Title
+			</div>
+		}
+		<div class="card-body">
+			<div class="row">
+				<div class="col-3">
+					<label>Line 1</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Line1) />
+					<InputText @bind-Value=Address.Line1 Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Line 2</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Line2) />
+					<InputText @bind-Value=Address.Line2 Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Line 3</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Line3) />
+					<InputText @bind-Value=Address.Line3 Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Town</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Town) />
+					<InputText @bind-Value=Address.Town Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Area</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Area) />
+					<InputText @bind-Value=Address.Area Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Country</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.Country) />
+					<InputText @bind-Value=Address.Country Class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-3">
+					<label>Postal code</label>
+				</div>
+				<div class="col-9">
+					<ValidationMessage For=@(() => Address.PostalCode) />
+					<InputText @bind-Value=Address.PostalCode Class="form-control" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code
+{
+	[Parameter] public string Title { get; set; }
+	[Parameter] public Address Address { get; set; }
+}
