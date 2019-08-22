@@ -8,8 +8,8 @@ namespace FluentValidationSample.FluentValidators
 		public AddressValidator()
 		{
 			RuleFor(x => x.Line1).NotEmpty();
-			RuleFor(x => x.Area).NotEmpty();
 			RuleFor(x => x.Town).NotEmpty();
+			RuleFor(x => x.Area).NotEmpty();
 			RuleFor(x => x.Country).NotEmpty();
 			RuleFor(x => x.PostalCode).NotEmpty();
 		}
