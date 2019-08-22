@@ -1,34 +1,60 @@
 ﻿@page "/"
 
-	<EditForm Model=@Person>
-		<PeterLeslieMorris.Blazor.Validation.Validate/>
-		<div class="form-group">
-			<label for="Salutation">Salutation</label>
-			<InputText Id="Salutation" @bind-Value=@Person.Salutation Class="form-control" />
-			<ValidationMessage For=@(() => Person.Salutation)/>
+<EditForm Model=@Person>
+	<PeterLeslieMorris.Blazor.Validation.Validate />
+	<div class="row">
+		<div class="col-3">
+			<label>Salutation</label>
 		</div>
-		<div class="form-group">
-			<label for="GivenName">Given name</label>
-			<InputText Id="GivenName" @bind-Value=@Person.GivenName Class="form-control" />
+		<div class="col-9">
+			<InputText @bind-Value=@Person.Salutation Class="form-control" />
+			<ValidationMessage For=@(() => Person.Salutation) />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<label>Given name</label>
+		</div>
+		<div class="col-9">
+			<InputText @bind-Value=@Person.GivenName Class="form-control" />
 			<ValidationMessage For=@(() => Person.GivenName) />
 		</div>
-		<div class="form-group">
-			<label for="MiddleNames">Middle names</label>
-			<InputText Id="MiddleNames" @bind-Value=@Person.MiddleNames Class="form-control" />
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<label>Middle names</label>
+		</div>
+		<div class="col-9">
+			<InputText @bind-Value=@Person.MiddleNames Class="form-control" />
 			<ValidationMessage For=@(() => Person.MiddleNames) />
 		</div>
-		<div class="form-group">
-			<label for="FamilyName">Family name</label>
-			<InputText Id="FamilyName" @bind-Value=@Person.FamilyName Class="form-control" />
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<label>Family name</label>
+		</div>
+		<div class="col-9">
+			<InputText @bind-Value=@Person.FamilyName Class="form-control" />
 			<ValidationMessage For=@(() => Person.FamilyName) />
 		</div>
-		<div class="form-group">
-			<label for="EmailAddress">Email address</label>
-			<InputText Id="EmailAddress" @bind-Value=@Person.EmailAddress Class="form-control" />
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<label>Email</label>
+		</div>
+		<div class="col-9">
+			<InputText @bind-Value=@Person.EmailAddress Class="form-control" />
 			<ValidationMessage For=@(() => Person.EmailAddress) />
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</EditForm>
+	</div>
+	<div class="row mt-4">
+		<AddressEdit Address=Person.HomeAddress Title="Home address" />
+	</div>
+	<div class="row mt-4">
+		<AddressEdit Address=Person.WorkAddress Title="Work address" />
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
 
 @code{
 	Models.Person Person = new Models.Person();

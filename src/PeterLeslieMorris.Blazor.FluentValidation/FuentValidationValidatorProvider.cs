@@ -37,7 +37,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			if (editContext.Model == null)
 				throw new NullReferenceException($"{nameof(editContext)}.{nameof(editContext.Model)}");
 
-			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext, serviceProvider);
+			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext.Model, serviceProvider);
 
 			var validationResults = new List<ValidationResult>();
 			foreach (IValidator validator in validators)
@@ -61,7 +61,6 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			FieldIdentifier fieldIdentifier,
 			IServiceProvider serviceProvider)
 		{
-
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
 			if (messages == null)
@@ -79,8 +78,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 					validatorSelector: new MemberNameValidatorSelector(propertiesToValidate)
 				);
 
-
-			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext, serviceProvider);
+			IEnumerable<IValidator> validators = GetValidatorsForObject(fieldIdentifier.Model, serviceProvider);
 
 			var validationResults = new List<ValidationResult>();
 			foreach (IValidator validator in validators)
@@ -101,10 +99,10 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			editContext.NotifyValidationStateChanged();
 		}
 
-		private static IEnumerable<IValidator> GetValidatorsForObject(EditContext editContext, IServiceProvider serviceProvider)
+		private static IEnumerable<IValidator> GetValidatorsForObject(object model, IServiceProvider serviceProvider)
 		{
 			var validatorTypesRepository = (FluentValidationRepository)serviceProvider.GetService(typeof(FluentValidationRepository));
-			IEnumerable<Type> validatorTypes = validatorTypesRepository.GetValidatorTypesForObject(editContext.Model);
+			IEnumerable<Type> validatorTypes = validatorTypesRepository.GetValidatorTypesForObject(model);
 			IEnumerable<IValidator> validators = validatorTypes.Select(x => (IValidator)serviceProvider.GetService(x));
 			return validators;
 		}
