@@ -94,7 +94,9 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 				.SelectMany(x => x.Errors)
 				.Select(x => x.ErrorMessage)
 				.Distinct();
-			messages.AddRange(fieldIdentifier, errorMessages);
+
+			foreach (string errorMessage in errorMessages)
+				messages.Add(fieldIdentifier, errorMessage);
 
 			editContext.NotifyValidationStateChanged();
 		}
