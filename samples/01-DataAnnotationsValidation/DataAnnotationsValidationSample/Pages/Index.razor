@@ -1,6 +1,7 @@
 ﻿@page "/"
+@using PeterLeslieMorris.Blazor.Validation.Extensions
 
-<EditForm Model=@Person>
+<EditForm Model=@Person OnSubmit=SubmitForm>
 	<PeterLeslieMorris.Blazor.Validation.Validate />
 	<div class="row">
 		<div class="col-3">
@@ -58,4 +59,9 @@
 
 @code{
 	Models.Person Person = new Models.Person();
+
+	void SubmitForm(EditContext editContext)
+	{
+		editContext.ValidateObjectTree();
+	}
 }

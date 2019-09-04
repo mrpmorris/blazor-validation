@@ -8,7 +8,7 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>PeterLeslieMorris.Blazor.Validation</PackageId>
-    <Version>0.6.0.0-pre</Version>
+    <Version>0.7.0.0-pre</Version>
     <Authors>Peter Morris</Authors>
     <Company>Peter Morris</Company>
     <Product>PeterLeslieMorris.Blazor.Validation</Product>
