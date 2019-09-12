@@ -5,8 +5,8 @@ Blazor-Validation is a validation agnostic library for validating forms in Blazo
 
 ## Installation
 You can download the latest release / pre-release NuGet packages from the official NuGet pages:
- - [Blazor-Validation]
- - [Blazor-FluentValidation]
+ - [Blazor-Validation] [![NuGet version (PeterLeslieMorris.Blazor.Validation)](https://img.shields.io/nuget/v/PeterLeslieMorris.Blazor.Validation.svg?style=flat-square)](https://www.nuget.org/packages/PeterLeslieMorris.Blazor.Validation/)
+ - [Blazor-FluentValidation] [![NuGet version (PeterLeslieMorris.Blazor.FluentValidation)](https://img.shields.io/nuget/v/PeterLeslieMorris.Blazor.FluentValidation.svg?style=flat-square)](https://www.nuget.org/packages/PeterLeslieMorris.Blazor.FluentValidation/) 
 
 ## Getting started
  1. Add a reference to PeterLeslieMorris.Blazor.Validation
