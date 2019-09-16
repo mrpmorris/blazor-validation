@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAnnotationsValidationSample.Models
 {
@@ -13,13 +14,22 @@ namespace DataAnnotationsValidationSample.Models
 		public string FamilyName { get; set; }
 		[Required, EmailAddress]
 		public string EmailAddress { get; set; }
-		public Address HomeAddress { get; set; }
-		public Address WorkAddress { get; set; }
+		[Required]
+		public List<NamedAddress> Addresses { get; set; }
 
 		public Person()
 		{
-			HomeAddress = new Address();
-			WorkAddress = new Address();
+			Addresses = new List<NamedAddress>
+			{
+				new NamedAddress
+				{
+					Name = "Home"
+				},
+				new NamedAddress
+				{
+					Name = "Work"
+				}
+			};
 		}
 	}
 }
