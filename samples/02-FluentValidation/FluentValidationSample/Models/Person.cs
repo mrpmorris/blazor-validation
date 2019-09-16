@@ -1,4 +1,6 @@
-﻿namespace FluentValidationSample.Models
+﻿using System.Collections.Generic;
+
+namespace FluentValidationSample.Models
 {
 	public class Person
 	{
@@ -7,13 +9,21 @@
 		public string MiddleNames { get; set; }
 		public string FamilyName { get; set; }
 		public string EmailAddress { get; set; }
-		public Address HomeAddress { get; set; }
-		public Address WorkAddress { get; set; }
+		public List<NamedAddress> Addresses { get; set; }
 
 		public Person()
 		{
-			HomeAddress = new Address();
-			WorkAddress = new Address();
+			Addresses = new List<NamedAddress>
+			{
+				new NamedAddress
+				{
+					Name = "Duplicated address - Home"
+				},
+				new NamedAddress
+				{
+					Name = "Duplicated address - Home"
+				}
+			};
 		}
 	}
 }

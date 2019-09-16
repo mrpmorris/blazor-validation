@@ -6,6 +6,7 @@
 		{
 			<div class="card-header">
 				@Title
+				<button class="btn btn-danger float-right" @onclick=Delete>Delete address</button>
 			</div>
 		}
 		<div class="card-body">
@@ -84,6 +85,17 @@
 
 @code
 {
-	[Parameter] public string Title { get; set; }
-	[Parameter] public Address Address { get; set; }
+	[Parameter]
+	public string Title { get; set; }
+
+	[Parameter]
+	public Address Address { get; set; }
+
+	[Parameter]
+	public EventCallback<Address> OnDeleted { get; set; }
+
+	public Task Delete()
+	{
+		return OnDeleted.InvokeAsync(Address);
+	}
 }

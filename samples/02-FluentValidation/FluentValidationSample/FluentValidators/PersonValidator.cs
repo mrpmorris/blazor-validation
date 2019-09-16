@@ -11,6 +11,7 @@ namespace FluentValidationSample.FluentValidators
 			RuleFor(x => x.GivenName).NotEmpty();
 			RuleFor(x => x.FamilyName).NotEmpty();
 			RuleFor(x => x.EmailAddress).NotEmpty().EmailAddress();
+			RuleFor(x => x.Addresses).NotEmpty().WithMessage("At least one address is required");
 		}
 	}
 }

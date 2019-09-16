@@ -33,6 +33,8 @@ More sample projects will be added as the framework develops.
   - [FluentValidation Sample] - Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+### New in 0.8
+ - Upgraded to Blazor RC1
 ### New in 0.7
  - Added an `EditContext.ValidateObjectTree`
  - Upgraded to Blazor Preview 9

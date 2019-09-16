@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -44,17 +45,23 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			if (instance == null)
 				return;
 
-			if (instance.GetType().Assembly == typeof(string).Assembly)
-				return;
-
 			if (validatedObjects.Contains(instance))
 				return;
 
 			validatedObjects.Add(instance);
 
-			var properties = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-			foreach (PropertyInfo property in properties)
-				ValidateProperty(editContext, instance, property, validatedObjects);
+			if (instance is IEnumerable)
+			{
+				foreach (object value in (IEnumerable)instance)
+					ValidateObject(editContext, value, validatedObjects);
+			}
+
+			if (instance.GetType().Assembly != typeof(string).Assembly)
+			{
+				var properties = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+				foreach (PropertyInfo property in properties)
+					ValidateProperty(editContext, instance, property, validatedObjects);
+			}
 		}
 
 		private static void ValidateProperty(
