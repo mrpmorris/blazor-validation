@@ -37,6 +37,9 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			if (editContext.Model == null)
 				throw new NullReferenceException($"{nameof(editContext)}.{nameof(editContext.Model)}");
 
+			messages.Clear();
+			editContext.NotifyValidationStateChanged();
+
 			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext.Model, serviceProvider);
 
 			var validationResults = new List<ValidationResult>();
@@ -45,8 +48,6 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 				var validationResult = await validator.ValidateAsync(editContext.Model);
 				validationResults.Add(validationResult);
 			}
-
-			messages.Clear();
 
 			IEnumerable<ValidationFailure> validationFailures = validationResults.SelectMany(x => x.Errors);
 			foreach (var validationError in validationFailures)
@@ -78,16 +79,17 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 					validatorSelector: new MemberNameValidatorSelector(propertiesToValidate)
 				);
 
-			IEnumerable<IValidator> validators = GetValidatorsForObject(fieldIdentifier.Model, serviceProvider);
+			messages.Clear(fieldIdentifier);
+			editContext.NotifyValidationStateChanged();
 
+			IEnumerable<IValidator> validators = GetValidatorsForObject(fieldIdentifier.Model, serviceProvider);
 			var validationResults = new List<ValidationResult>();
+
 			foreach (IValidator validator in validators)
 			{
 				var validationResult = await validator.ValidateAsync(fluentValidationContext);
 				validationResults.Add(validationResult);
 			}
-
-			messages.Clear(fieldIdentifier);
 
 			IEnumerable<string> errorMessages =
 				validationResults
