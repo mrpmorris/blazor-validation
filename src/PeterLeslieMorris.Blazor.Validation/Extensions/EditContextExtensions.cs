@@ -48,20 +48,21 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			if (validatedObjects.Contains(instance))
 				return;
 
-			validatedObjects.Add(instance);
-
-			if (instance is IEnumerable)
+			if (instance is IEnumerable && !(instance is string))
 			{
 				foreach (object value in (IEnumerable)instance)
 					ValidateObject(editContext, value, validatedObjects);
+				return;
 			}
 
-			if (instance.GetType().Assembly != typeof(string).Assembly)
-			{
-				var properties = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-				foreach (PropertyInfo property in properties)
-					ValidateProperty(editContext, instance, property, validatedObjects);
-			}
+			if (instance.GetType().Assembly == typeof(string).Assembly)
+				return;
+
+			validatedObjects.Add(instance);
+
+			var properties = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+			foreach (PropertyInfo property in properties)
+				ValidateProperty(editContext, instance, property, validatedObjects);
 		}
 
 		private static void ValidateProperty(
