@@ -4,9 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>0.10.0.0</AssemblyVersion>
-    <FileVersion>0.10.0.0</FileVersion>
-    <Version>0.10.0.0-pre</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
     <Description>FluentValidation for Blazor</Description>
     <Copyright>Peter Morris</Copyright>
     <PackageLicenseFile>LICENCE</PackageLicenseFile>

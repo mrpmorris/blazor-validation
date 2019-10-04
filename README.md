@@ -33,6 +33,10 @@ More sample projects will be added as the framework develops.
  - [FluentValidation Sample]- Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+### New in 1.0.0
+- Updated FluentValidationSample
+- First major release
+
 ### New in 0.10
 - Remove old EditContextExtensions file
 - Ensure strings are not enumerated when traversing a whole object tree to validate

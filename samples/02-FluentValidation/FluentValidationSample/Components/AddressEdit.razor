@@ -2,15 +2,21 @@
 
 <div class="col-12">
 	<div class="card">
-		@if (!string.IsNullOrEmpty(Title))
+		@if (TitleTemplate == null)
 		{
-			<div class="card-header">
-				@Title
-				<button class="btn btn-danger float-right" @onclick=Delete>Delete address</button>
-			</div>
+			@if (!string.IsNullOrEmpty(Title))
+			{
+				<div class="card-header">
+					@Title
+				</div>
+			}
+		}
+		else
+		{
+			@TitleTemplate
 		}
 		<div class="card-body">
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Line 1</label>
 				</div>
@@ -20,7 +26,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Line 2</label>
 				</div>
@@ -30,7 +36,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Line 3</label>
 				</div>
@@ -40,7 +46,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Town</label>
 				</div>
@@ -50,7 +56,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Area</label>
 				</div>
@@ -60,7 +66,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Country</label>
 				</div>
@@ -70,7 +76,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="mb-2 row">
 				<div class="col-3">
 					<label>Postal code</label>
 				</div>
@@ -92,10 +98,5 @@
 	public Address Address { get; set; }
 
 	[Parameter]
-	public EventCallback<Address> OnDeleted { get; set; }
-
-	public Task Delete()
-	{
-		return OnDeleted.InvokeAsync(Address);
-	}
+	public RenderFragment TitleTemplate { get; set; }
 }

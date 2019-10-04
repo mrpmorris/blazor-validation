@@ -1,4 +1,13 @@
-﻿using Microsoft.AspNetCore.Blazor.Hosting;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace FluentValidationSample
 {
@@ -9,8 +18,11 @@ namespace FluentValidationSample
 			CreateHostBuilder(args).Build().Run();
 		}
 
-		public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
-				BlazorWebAssemblyHost.CreateDefaultBuilder()
-						.UseBlazorStartup<Startup>();
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
+			 Host.CreateDefaultBuilder(args)
+				  .ConfigureWebHostDefaults(webBuilder =>
+				  {
+					  webBuilder.UseStartup<Startup>();
+				  });
 	}
 }
