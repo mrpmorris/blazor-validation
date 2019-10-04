@@ -1,6 +1,5 @@
 ﻿@page "/"
 @using PeterLeslieMorris.Blazor.Validation.Extensions
-@inject NavigationManager NavigationManager
 
 <EditForm Model=@Person OnSubmit=SubmitForm>
 	<PeterLeslieMorris.Blazor.Validation.Validate />
@@ -57,10 +56,10 @@
 				<TitleTemplate>
 					<div class="card-header">
 						@namedAddress.Name
-						<a href="@NavigationManager.Uri" class="btn btn-danger float-right"
+						<button type="button" class="btn btn-danger float-right"
 							@onclick=@(() => DeleteAddress(namedAddress))>
 							Delete address
-						</a>
+						</button>
 					</div>
 				</TitleTemplate>
 			</AddressEdit>
