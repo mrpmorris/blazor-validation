@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.5.0" />
-    <PackageReference Include="PeterLeslieMorris.Blazor.Validation" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +27,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
   </ItemGroup>
 
 </Project>
