@@ -24,10 +24,10 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			return !editContext.GetValidationMessages().Any();
 		}
 
-		public static void ValidateProperty(this EditContext editContext, FieldIdentifier fieldIdentifier)
+		public static bool ValidateProperty(this EditContext editContext, FieldIdentifier fieldIdentifier)
 		{
 			if (fieldIdentifier.Model == null)
-				return;
+				return false;
 
 			var propertyInfo = fieldIdentifier.Model.GetType().GetProperty(
 				fieldIdentifier.FieldName,
@@ -35,6 +35,8 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 
 			var validatedObjects = new HashSet<object>();
 			ValidateProperty(editContext, fieldIdentifier.Model, propertyInfo, validatedObjects);
+
+			return !editContext.GetValidationMessages(fieldIdentifier).Any();
 		}
 
 		private static void ValidateObject(
