@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
+<<<<<<< HEAD
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Version>1.2.0</Version>
+=======
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0-dotnet3.1.0-preview4.19579.2</Version>
+>>>>>>> aaa1df12572281c7cd4e74303b031e9f83a0f12f
+    <Description>FluentValidation for Blazor</Description>
+    <Copyright>Peter Morris</Copyright>
+    <PackageLicenseFile>LICENCE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
+    <PackageTags>Blazor FluentValidation</PackageTags>
+    <DelaySign>false</DelaySign>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+<<<<<<< HEAD
+    <PackageReference Include="FluentValidation" Version="8.6.1" />
+=======
+    <PackageReference Include="FluentValidation" Version="8.6.0" />
+>>>>>>> aaa1df12572281c7cd4e74303b031e9f83a0f12f
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENCE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

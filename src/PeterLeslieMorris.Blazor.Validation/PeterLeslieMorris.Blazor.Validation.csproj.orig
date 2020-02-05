@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <LangVersion>7.3</LangVersion>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>PeterLeslieMorris.Blazor.Validation</PackageId>
+<<<<<<< HEAD
+    <Version>1.2.0</Version>
+=======
+    <Version>1.1.0-dotnet3.1.0-preview4.19579.2</Version>
+>>>>>>> aaa1df12572281c7cd4e74303b031e9f83a0f12f
+    <Authors>Peter Morris</Authors>
+    <Company>Peter Morris</Company>
+    <Product>PeterLeslieMorris.Blazor.Validation</Product>
+    <Description>Validation for Blazor</Description>
+    <Copyright>Peter Morris</Copyright>
+    <PackageLicenseFile>LICENCE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
+    <PackageTags>Blazor Validation</PackageTags>
+<<<<<<< HEAD
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+=======
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+>>>>>>> aaa1df12572281c7cd4e74303b031e9f83a0f12f
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
+    <EmbeddedResource Include="content\**\*.js" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="content\**\*.css" LogicalName="blazor:css:%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="content\**" Exclude="**\*.js;**\*.css" LogicalName="blazor:file:%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENCE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="content\" />
+  </ItemGroup>
+
+  <ItemGroup>
+<<<<<<< HEAD
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.1" />
+=======
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.0" />
+>>>>>>> aaa1df12572281c7cd4e74303b031e9f83a0f12f
+  </ItemGroup>
+
+</Project>
