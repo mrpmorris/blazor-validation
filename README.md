@@ -33,6 +33,9 @@ More sample projects will be added as the framework develops.
  - [FluentValidation Sample]- Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+### New in 1.2.0
+- Return `bool` from EditContext.ValidateProperty
+
 ### New in 1.0.0
 - Updated FluentValidationSample
 - First major release
