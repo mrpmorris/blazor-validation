@@ -45,7 +45,10 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			if (properties == null || properties.Length == 0)
 				throw new ArgumentNullException(nameof(properties));
 
-			return properties.All(x => editContext.ValidateProperty(x));
+			bool valid = true;
+			foreach (FieldIdentifier property in properties)
+				valid &= editContext.ValidateProperty(property);
+			return valid;
 		}
 
 		private static void ValidateObject(
