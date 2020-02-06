@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,14 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			ValidateProperty(editContext, fieldIdentifier.Model, propertyInfo, validatedObjects);
 
 			return !editContext.GetValidationMessages(fieldIdentifier).Any();
+		}
+
+		public static bool ValidateProperties(this EditContext editContext, params FieldIdentifier[] properties)
+		{
+			if (properties == null || properties.Length == 0)
+				throw new ArgumentNullException(nameof(properties));
+
+			return properties.All(x => editContext.ValidateProperty(x));
 		}
 
 		private static void ValidateObject(
