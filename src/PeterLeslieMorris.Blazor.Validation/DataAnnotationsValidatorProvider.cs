@@ -6,7 +6,9 @@ namespace PeterLeslieMorris.Blazor.Validation
 {
 	public class DataAnnotationsValidatorProvider : IValidationProvider
 	{
-		public void InitializeEditContext(EditContext editContext, IServiceProvider serviceProvider)
+		public void InitializeEditContext(
+			EditContext editContext,
+			IServiceProvider serviceProvider)
 		{
 			editContext.AddDataAnnotationsValidation();
 		}
@@ -14,7 +16,8 @@ namespace PeterLeslieMorris.Blazor.Validation
 
 	public static class ValidationConfigurationDataAnnotationsExtensions
 	{
-		public static ValidationConfiguration AddDataAnnotationsValidation(this ValidationConfiguration config)
+		public static ValidationConfiguration AddDataAnnotationsValidation(
+			this ValidationConfiguration config)
 		{
 			config.Services.AddScoped<DataAnnotationsValidatorProvider>();
 			config.Repository.Add(typeof(DataAnnotationsValidatorProvider));

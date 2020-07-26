@@ -25,7 +25,9 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			return !editContext.GetValidationMessages().Any();
 		}
 
-		public static bool ValidateProperty(this EditContext editContext, FieldIdentifier fieldIdentifier)
+		public static bool ValidateProperty(
+			this EditContext editContext,
+			FieldIdentifier fieldIdentifier)
 		{
 			if (fieldIdentifier.Model == null)
 				return false;
@@ -40,7 +42,9 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			return !editContext.GetValidationMessages(fieldIdentifier).Any();
 		}
 
-		public static bool ValidateProperties(this EditContext editContext, params FieldIdentifier[] properties)
+		public static bool ValidateProperties(
+			this EditContext editContext,
+			params FieldIdentifier[] properties)
 		{
 			if (properties == null || properties.Length == 0)
 				throw new ArgumentNullException(nameof(properties));
@@ -117,6 +121,5 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			editContext.NotifyFieldChanged(fieldIdentifier);
 			IsModifiedProperty.SetValue(fieldState, originalIsModified);
 		}
-
 	}
 }

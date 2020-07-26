@@ -13,17 +13,17 @@ namespace FluentValidationSample.FluentValidators
 			RuleFor(x => x.Salutation)
 				.Cascade(CascadeMode.StopOnFirstFailure)
 				.NotEmpty()
-				.MustAsync(UpdateUIOnError).WithMessage("Cannot be DR");
+				.MustAsync(LongRunningAsyncMethod).WithMessage("Cannot be DR");
 			RuleFor(x => x.GivenName).NotEmpty();
 			RuleFor(x => x.FamilyName).NotEmpty();
 			RuleFor(x => x.EmailAddress).NotEmpty().EmailAddress();
 			RuleFor(x => x.Addresses).NotEmpty().WithMessage("At least one address is required");
 		}
 
-		private async Task<bool> UpdateUIOnError(string arg1, CancellationToken arg2)
+		private async Task<bool> LongRunningAsyncMethod(string arg1, CancellationToken arg2)
 		{
-			await Task.Delay(2000);
-			if (string.Compare(arg1, "DR", StringComparison.InvariantCultureIgnoreCase) == 0)
+			await Task.Delay(1000);
+			if ("DR".Equals(arg1, StringComparison.InvariantCultureIgnoreCase))
 				return false;
 			return true;
 		}

@@ -5,7 +5,9 @@ namespace PeterLeslieMorris.Blazor.Validation
 {
 	public static class ValidationServiceCollectionExtensions
 	{
-		public static IServiceCollection AddFormValidation(this IServiceCollection instance, Action<ValidationConfiguration> config = null)
+		public static IServiceCollection AddFormValidation(
+			this IServiceCollection instance,
+			Action<ValidationConfiguration> config = null)
 		{
 			var repository = new ValidationProviderRepository();
 			instance.AddScoped<IValidationProviderRepository>((_) => repository);

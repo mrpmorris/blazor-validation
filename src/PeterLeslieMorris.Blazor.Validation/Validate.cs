@@ -7,9 +7,14 @@ namespace PeterLeslieMorris.Blazor.Validation
 {
 	public class Validate : ComponentBase
 	{
-		[CascadingParameter] EditContext CurrentEditContext { get; set; }
-		[Inject] IValidationProviderRepository Repository { get; set; }
-		[Inject] IServiceProvider ServiceProvider { get; set; }
+		[CascadingParameter]
+		EditContext CurrentEditContext { get; set; }
+
+		[Inject]
+		IValidationProviderRepository Repository { get; set; }
+
+		[Inject]
+		IServiceProvider ServiceProvider { get; set; }
 
 		public override async Task SetParametersAsync(ParameterView parameters)
 		{

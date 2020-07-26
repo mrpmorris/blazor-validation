@@ -6,12 +6,15 @@ using PeterLeslieMorris.Blazor.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PeterLeslieMorris.Blazor.FluentValidation
 {
 	public class FluentValidationValidatorProvider : IValidationProvider
 	{
-		public void InitializeEditContext(EditContext editContext, IServiceProvider serviceProvider)
+		public void InitializeEditContext(
+			EditContext editContext,
+			IServiceProvider serviceProvider)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
@@ -20,13 +23,22 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 
 			var messages = new ValidationMessageStore(editContext);
 			editContext.OnValidationRequested +=
-				(sender, _) => ValidateModel((EditContext)sender, messages, serviceProvider);
+				(sender, eventArgs) =>
+				{
+					_ = ValidateModel((EditContext)sender, messages, serviceProvider);
+				};
 
 			editContext.OnFieldChanged +=
-				(sender, eventArgs) => ValidateField(editContext, messages, eventArgs.FieldIdentifier, serviceProvider);
+				(sender, eventArgs) =>
+				{
+					_ = ValidateField(editContext, messages, eventArgs.FieldIdentifier, serviceProvider);
+				};
 		}
 
-		private async void ValidateModel(EditContext editContext, ValidationMessageStore messages, IServiceProvider serviceProvider)
+		private async Task ValidateModel(
+			EditContext editContext,
+			ValidationMessageStore messages,
+			IServiceProvider serviceProvider)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
@@ -58,7 +70,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			editContext.NotifyValidationStateChanged();
 		}
 
-		private async void ValidateField(
+		private async Task ValidateField(
 			EditContext editContext,
 			ValidationMessageStore messages,
 			FieldIdentifier fieldIdentifier,
@@ -105,7 +117,9 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			editContext.NotifyValidationStateChanged();
 		}
 
-		private static IEnumerable<IValidator> GetValidatorsForObject(object model, IServiceProvider serviceProvider)
+		private static IEnumerable<IValidator> GetValidatorsForObject(
+			object model,
+			IServiceProvider serviceProvider)
 		{
 			var validatorTypesRepository = (FluentValidationRepository)serviceProvider.GetService(typeof(FluentValidationRepository));
 			IEnumerable<Type> validatorTypes = validatorTypesRepository.GetValidatorTypesForObject(model);

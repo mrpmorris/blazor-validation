@@ -14,7 +14,8 @@ namespace PeterLeslieMorris.Blazor.Validation
 			if (providerType == null)
 				throw new ArgumentNullException(nameof(providerType));
 			if (!typeof(IValidationProvider).IsAssignableFrom(providerType))
-				throw new ArgumentException($"{providerType.Name} does not implement {nameof(IValidationProvider)}");
+				throw new ArgumentException($"{providerType.Name} " +
+					$"does not implement {nameof(IValidationProvider)}");
 
 			Providers = Providers.Concat(new Type[] { providerType }).ToArray();
 			return this;
