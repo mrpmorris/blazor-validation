@@ -36,7 +36,7 @@ More sample projects will be added as the framework develops.
 ### New in 1.4.0
 - Upgrade to FluentValidation 9
 
-### New in 1.3.0
+### New in 1.3.1
 - Add new EditContext.ValidateProperties for validating sub-sets of an object
 
 ### New in 1.2.0
