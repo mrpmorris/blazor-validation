@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Data\Mine\Code\blazor-validation\src\PeterLeslieMorris.Blazor.FluentValidation\PeterLeslieMorris.Blazor.FluentValidation.csproj" />
-    <ProjectReference Include="C:\Data\Mine\Code\blazor-validation\src\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
+    <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.FluentValidation\PeterLeslieMorris.Blazor.FluentValidation.csproj" />
+    <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
   </ItemGroup>
 
 </Project>

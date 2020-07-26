@@ -42,10 +42,12 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 
 			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext.Model, serviceProvider);
 
+			var validationContext = new ValidationContext<object>(editContext.Model);
+
 			var validationResults = new List<ValidationResult>();
 			foreach (IValidator validator in validators)
 			{
-				var validationResult = await validator.ValidateAsync(editContext.Model);
+				var validationResult = await validator.ValidateAsync(validationContext);
 				validationResults.Add(validationResult);
 			}
 
@@ -73,7 +75,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 
 			var propertiesToValidate = new string[] { fieldIdentifier.FieldName };
 			var fluentValidationContext = 
-				new ValidationContext(
+				new ValidationContext<object>(
 					instanceToValidate: fieldIdentifier.Model,
 					propertyChain: new PropertyChain(),
 					validatorSelector: new MemberNameValidatorSelector(propertiesToValidate)
