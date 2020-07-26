@@ -14,7 +14,7 @@ You can download the latest release / pre-release NuGet packages from the offici
  3. In startup.cs add `using PeterLeslieMorris.Blazor.Validation` and then add the relevant validation in the `ConfigureServices` method.
 
 -  `services.AddFormValidation(config => config.AddDataAnnotationsValidation());`
--  `services.AddFormValidation(config => config.AddFluentValidation();`
+-  `services.AddFormValidation(config => config.AddFluentValidation());`
 
 It is possible to add as many validation providers as you wish
 ```
