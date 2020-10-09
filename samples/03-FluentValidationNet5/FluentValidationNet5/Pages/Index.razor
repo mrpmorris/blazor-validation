@@ -1,0 +1,92 @@
+﻿@page "/"
+@using PeterLeslieMorris.Blazor.Validation.Extensions
+
+<EditForm Model=@Person OnSubmit=SubmitForm>
+    <PeterLeslieMorris.Blazor.Validation.Validate />
+    <div class="mb-2 row">
+        <div class="col-3">
+            <label>Salutation</label>
+        </div>
+        <div class="col-9">
+            <InputText @bind-Value=@Person.Salutation Class="form-control" />
+            <ValidationMessage For=@(() => Person.Salutation) />
+        </div>
+    </div>
+    <div class="mb-2 row">
+        <div class="col-3">
+            <label>Given name</label>
+        </div>
+        <div class="col-9">
+            <InputText @bind-Value=@Person.GivenName Class="form-control" />
+            <ValidationMessage For=@(() => Person.GivenName) />
+        </div>
+    </div>
+    <div class="mb-2 row">
+        <div class="col-3">
+            <label>Middle names</label>
+        </div>
+        <div class="col-9">
+            <InputText @bind-Value=@Person.MiddleNames Class="form-control" />
+            <ValidationMessage For=@(() => Person.MiddleNames) />
+        </div>
+    </div>
+    <div class="mb-2 row">
+        <div class="col-3">
+            <label>Family name</label>
+        </div>
+        <div class="col-9">
+            <InputText @bind-Value=@Person.FamilyName Class="form-control" />
+            <ValidationMessage For=@(() => Person.FamilyName) />
+        </div>
+    </div>
+    <div class="mb-2 row">
+        <div class="col-3">
+            <label>Email</label>
+        </div>
+        <div class="col-9">
+            <InputText @bind-Value=@Person.EmailAddress Class="form-control" />
+            <ValidationMessage For=@(() => Person.EmailAddress) />
+        </div>
+    </div>
+    <button class="btn btn-primary" @onclick="AddAddress">Add Address</button>
+    <ValidationMessage For=@( () => Person.Addresses ) />
+    @foreach (var namedAddress in Person.Addresses)
+    {
+        <div class="row mt-4">
+            <AddressEdit Address=@namedAddress.Address Title=@namedAddress.Name>
+                <TitleTemplate>
+                    <div class="card-header">
+                        @namedAddress.Name
+                        <button type="button" class="btn btn-danger float-right"
+                                @onclick=@(() => DeleteAddress(namedAddress))>
+                            Delete address
+                        </button>
+                    </div>
+                </TitleTemplate>
+            </AddressEdit>
+        </div>
+    }
+    <button type="submit" class="mt-2 btn btn-primary btn-block mb-4 mt-4">Submit</button>
+</EditForm>
+
+@code{
+    Models.Person Person = new Models.Person();
+
+    void SubmitForm(EditContext editContext)
+    {
+        editContext.ValidateObjectTree();
+    }
+
+    void AddAddress()
+    {
+        Person.Addresses
+            .Add(new NamedAddress() { Name = $"Address {Person.Addresses.Count + 1}" });
+    }
+
+    void DeleteAddress(Models.NamedAddress namedAddress)
+    {
+        Person.Addresses = Person.Addresses
+            .Where(x => x != namedAddress)
+            .ToList();
+    }
+}

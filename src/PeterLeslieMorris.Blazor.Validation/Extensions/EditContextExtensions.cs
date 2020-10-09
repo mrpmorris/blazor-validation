@@ -100,15 +100,10 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			object instance,
 			string propertyName)
 		{
-			if (GetFieldStateMethod == null)
-			{
-				GetFieldStateMethod = editContext.GetType().GetMethod(
-					"GetFieldState",
-					BindingFlags.NonPublic | BindingFlags.Instance);
-			}
 
 			var fieldIdentifier = new FieldIdentifier(instance, propertyName);
-			object fieldState = GetFieldStateMethod.Invoke(editContext, new object[] { fieldIdentifier, true });
+
+			var fieldState = GetFieldState(editContext, fieldIdentifier);
 
 			if (IsModifiedProperty == null)
 			{
@@ -117,9 +112,35 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 					BindingFlags.Public | BindingFlags.Instance);
 			}
 
-			object originalIsModified = IsModifiedProperty.GetValue(fieldState);
+			var originalIsModified = IsModifiedProperty.GetValue(fieldState);
 			editContext.NotifyFieldChanged(fieldIdentifier);
 			IsModifiedProperty.SetValue(fieldState, originalIsModified);
+		}
+
+		private static Object GetFieldState(EditContext editContext, FieldIdentifier fieldIdentifier)
+		{
+#if NETSTANDARD2_1
+			Object[] parameters = new object[] { fieldIdentifier, true };
+#else
+			Object[] parameters = new object[] { fieldIdentifier };
+#endif
+			EnsureGetFieldStateMethod(editContext);
+			return GetFieldStateMethod.Invoke(editContext, parameters);
+		}
+
+		private static void EnsureGetFieldStateMethod(EditContext editContext)
+		{
+#if NETSTANDARD2_1
+			var methodname = "GetFieldState";
+#else
+			var methodname = "GetOrAddFieldState";
+#endif
+
+			if (GetFieldStateMethod == null)
+			{
+				GetFieldStateMethod = editContext.GetType().GetMethod(methodname,
+					BindingFlags.NonPublic | BindingFlags.Instance);
+			}
 		}
 	}
 }
