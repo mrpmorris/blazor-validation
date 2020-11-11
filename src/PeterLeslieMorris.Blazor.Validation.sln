@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-FluentValidation", "02-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{451C13F4-69B5-4AB3-B1A8-008A112DE521}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{11850E97-B92B-4436-B471-3D43A1802A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{11850E97-B92B-4436-B471-3D43A1802A90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3D40341-FD91-4A62-8EAA-B3548AFD762A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
