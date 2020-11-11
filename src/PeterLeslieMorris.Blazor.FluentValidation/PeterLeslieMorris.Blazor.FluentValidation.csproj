@@ -6,7 +6,7 @@
 		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
 		<AssemblyVersion>1.5.0.0</AssemblyVersion>
 		<FileVersion>1.5.0.0</FileVersion>
-		<Version>1.5.0-beta-1</Version>
+		<Version>1.5.0</Version>
 		<Description>FluentValidation for Blazor</Description>
 		<Copyright>Peter Morris</Copyright>
 		<PackageLicenseFile>LICENCE</PackageLicenseFile>

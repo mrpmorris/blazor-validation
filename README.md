@@ -49,6 +49,7 @@ More sample projects will be added as the framework develops.
 ## What's new
 ### New in 1.5.0
 - Support .NET 5.0
+
 ### New in 1.4.0
 - Upgrade to FluentValidation 9
 
