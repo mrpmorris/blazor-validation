@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.1,net5.0</TargetFrameworks>
-		<SignAssembly>false</SignAssembly>
+		<TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
+		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
-		<AssemblyVersion>1.4.0.0</AssemblyVersion>
-		<FileVersion>1.4.0.0</FileVersion>
-		<Version>1.4.0</Version>
+		<AssemblyVersion>1.5.0.0</AssemblyVersion>
+		<FileVersion>1.5.0.0</FileVersion>
+		<Version>1.5.0-beta-1</Version>
 		<Description>FluentValidation for Blazor</Description>
 		<Copyright>Peter Morris</Copyright>
 		<PackageLicenseFile>LICENCE</PackageLicenseFile>

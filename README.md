@@ -16,15 +16,27 @@ You can download the latest release / pre-release NuGet packages from the offici
  3. In startup.cs add `using PeterLeslieMorris.Blazor.Validation` and then add the relevant validation in the `ConfigureServices` method.
 
 -  `services.AddFormValidation(config => config.AddDataAnnotationsValidation());`
--  `services.AddFormValidation(config => config.AddFluentValidation());`
+-  `services.AddFormValidation(config => config.AddFluentValidation(typeof(SomeValidator).Assembly));`
 
 It is possible to add as many validation providers as you wish
-```
+```c#
 services.AddFormValidation(config => 
   config
     .AddDataAnnotationsValidation()
-    .AddFluentValidation()
+    .AddFluentValidation(typeof(SomeValidator).Assembly)
 );
+```
+
+Also you can have the `FluentValidation` extension scan multiple assemblies
+
+```c#
+services.AddFormValidation(config => 
+  config
+    .AddFluentValidation(
+      typeof(SomeValidator).Assembly,
+      typeof(ClassInAnotherDll).Assembly,
+      andAnotherAssembly,
+      andYetAnotherAssembly));
 ```
 
 The standard Blazor components `<ValidationSummary>` and `<ValidationMessage>` will now work with your selected validation options.
@@ -35,6 +47,8 @@ More sample projects will be added as the framework develops.
  - [FluentValidation Sample]- Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+### New in 1.5.0
+- Support .NET 5.0
 ### New in 1.4.0
 - Upgrade to FluentValidation 9
 
