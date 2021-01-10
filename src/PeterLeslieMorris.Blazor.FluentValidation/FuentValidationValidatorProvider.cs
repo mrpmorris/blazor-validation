@@ -4,8 +4,10 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Components.Forms;
 using PeterLeslieMorris.Blazor.Validation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace PeterLeslieMorris.Blazor.FluentValidation
@@ -65,9 +67,55 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 
 			IEnumerable<ValidationFailure> validationFailures = validationResults.SelectMany(x => x.Errors);
 			foreach (var validationError in validationFailures)
-				messages.Add(editContext.Field(validationError.PropertyName), validationError.ErrorMessage);
+			{
+				GetParentObjectAndPropertyName(editContext.Model, validationError.PropertyName, out object parentObject, out string propertyName);
+				if (parentObject != null)
+					messages.Add(new FieldIdentifier(parentObject, propertyName), validationError.ErrorMessage);
+			}
 
 			editContext.NotifyValidationStateChanged();
+		}
+
+		private void GetParentObjectAndPropertyName(
+			object model,
+			string propertyPath,
+			out object parentObject,
+			out string propertyName)
+		{
+			if (model == null)
+				throw new ArgumentNullException(nameof(model));
+
+			var propertyPathParts = new Queue<string>(propertyPath.Split('.'));
+			Type modelType = model.GetType();
+			while (propertyPathParts.Count > 1)
+			{
+				var name = propertyPathParts.Dequeue();
+
+				string propertyIndexString = null;
+				int bracketIndex = name.IndexOf('[');
+				if (bracketIndex > 0)
+				{
+					propertyIndexString = name.Substring(bracketIndex + 1, name.Length - bracketIndex - 2);
+					name = name.Remove(bracketIndex);
+				}
+
+				PropertyInfo propertyInfo = modelType.GetProperty(name);
+				model = model == null
+					? null
+					: propertyInfo.GetValue(model, null);
+
+				if (propertyIndexString == null)
+					modelType = propertyInfo.PropertyType;
+				else
+				{
+					List<object> collection = ((IEnumerable<object>)model).ToList();
+					int propertyIndex = int.Parse(propertyIndexString);
+					model = collection[propertyIndex];
+				}
+			}
+
+			parentObject = model;
+			propertyName = propertyPathParts.Dequeue();
 		}
 
 		private async Task ValidateField(
