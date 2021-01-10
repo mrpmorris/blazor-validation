@@ -1,37 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
 		<IsPackable>true</IsPackable>
 		<LangVersion>7.3</LangVersion>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>PeterLeslieMorris.Blazor.Validation</PackageId>
-		<Version>1.5.0</Version>
-		<Authors>Peter Morris</Authors>
-		<Company>Peter Morris</Company>
 		<Product>PeterLeslieMorris.Blazor.Validation</Product>
 		<Description>Validation for Blazor</Description>
-		<Copyright>Peter Morris</Copyright>
-		<PackageLicenseFile>LICENCE</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
-		<PackageIconUrl>https://raw.githubusercontent.com/mrpmorris/blazor-validation/master/docs/images/blazor-validation-logo-small.png</PackageIconUrl>
-		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
 		<PackageTags>Blazor Validation</PackageTags>
-		<AssemblyVersion>1.5.0.0</AssemblyVersion>
-		<FileVersion>1.5.0.0</FileVersion>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
-		<DelaySign>false</DelaySign>
+		<PackageIcon>blazor-validation.png</PackageIcon>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="..\..\LICENCE">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
-	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.6" />
@@ -39,6 +18,13 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="blazor-validation.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
