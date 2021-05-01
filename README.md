@@ -47,6 +47,14 @@ More sample projects will be added as the framework develops.
  - [FluentValidation Sample]- Shows how to use the [FluentValidation.com] library to validate.
 
 ## What's new
+
+### New in 1.7.0
+- Upgrade to FluentValidation V10
+- Prevent ValidateObjectTree from visiting struct properties [Bug #33](https://github.com/mrpmorris/blazor-validation/issues/33)
+
+### New in 1.6.0
+- Suport FluentValidation's RuleForEach and ChildRules
+
 ### New in 1.5.0
 - Support .NET 5.0
 
