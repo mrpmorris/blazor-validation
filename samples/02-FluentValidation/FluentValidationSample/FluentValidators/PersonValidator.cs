@@ -11,7 +11,7 @@ namespace FluentValidationSample.FluentValidators
 		public PersonValidator()
 		{
 			RuleFor(x => x.Salutation)
-				.Cascade(CascadeMode.StopOnFirstFailure)
+				.Cascade(CascadeMode.Stop)
 				.NotEmpty()
 				.MustAsync(LongRunningAsyncMethod).WithMessage("Cannot be DR");
 			RuleFor(x => x.GivenName).NotEmpty();
