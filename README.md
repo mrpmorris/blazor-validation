@@ -50,7 +50,7 @@ More sample projects will be added as the framework develops.
 
 ### New in 1.7.0
 - Upgrade to FluentValidation V10
-- Prevent ValidateObjectTree from visiting struct properties
+- Prevent ValidateObjectTree from visiting struct properties [Bug #33](https://github.com/mrpmorris/blazor-validation/issues/33)
 
 ### New in 1.6.0
 - Suport FluentValidation's RuleForEach and ChildRules
