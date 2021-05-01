@@ -29,9 +29,6 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			this EditContext editContext,
 			FieldIdentifier fieldIdentifier)
 		{
-			if (fieldIdentifier.Model == null)
-				return false;
-
 			var propertyInfo = fieldIdentifier.Model.GetType().GetProperty(
 				fieldIdentifier.FieldName,
 				BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static);
@@ -89,6 +86,9 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 			PropertyInfo property,
 			HashSet<object> validatedObjects)
 		{
+			if (property.PropertyType.IsValueType)
+				return;
+
 			NotifyPropertyChanged(editContext, instance, property.Name);
 
 			object value = property.GetValue(instance);
