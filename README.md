@@ -1,3 +1,7 @@
+# OBSOLETE
+
+This library is now obsolete. I recommend you use [Blazored FluentValidation] instead
+
 # Blazor-Validation
 
 
@@ -102,3 +106,4 @@ More sample projects will be added as the framework develops.
    [Blazor-FluentValidation]: <https://www.nuget.org/packages/PeterLeslieMorris.Blazor.FluentValidation/>
    [Data Annotations Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/01-DataAnnotationsValidation/>
    [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/02-FluentValidation/>
+   [Blazored FluentValidation]: <https://github.com/Blazored/FluentValidation>
