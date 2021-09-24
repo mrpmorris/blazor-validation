@@ -1,7 +1,3 @@
-# OBSOLETE
-
-This library is now obsolete. I recommend you use [Blazored FluentValidation] instead
-
 # Blazor-Validation
 
 
