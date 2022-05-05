@@ -10,7 +10,11 @@ namespace PeterLeslieMorris.Blazor.Validation
 			EditContext editContext,
 			IServiceProvider serviceProvider)
 		{
+#if NET6_0_OR_GREATER
+			editContext.EnableDataAnnotationsValidation();
+#else
 			editContext.AddDataAnnotationsValidation();
+#endif
 		}
 	}
 

@@ -48,6 +48,10 @@ More sample projects will be added as the framework develops.
 
 ## What's new
 
+### New in 1.8.0
+- Use `Services.TryAddScoped` instead of `Services.AddScoped` for validators, in case 
+  the consuming app has already registered validators with a different lifetime.
+
 ### New in 1.7.0
 - Upgrade to FluentValidation V10
 - Prevent ValidateObjectTree from visiting struct properties [Bug #33](https://github.com/mrpmorris/blazor-validation/issues/33)
