@@ -1,20 +1,30 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PeterLeslieMorris.Blazor.Validation
 {
 	public class Validate : ComponentBase
 	{
-		[CascadingParameter]
-		EditContext CurrentEditContext { get; set; }
+		[CascadingParameter] EditContext CurrentEditContext { get; set; }
+		[Inject] IValidationProviderRepository Repository { get; set; }
+		[Inject] IServiceProvider ServiceProvider { get; set; }
 
-		[Inject]
-		IValidationProviderRepository Repository { get; set; }
+		private List<IValidationProvider> ValidationProviders = new List<IValidationProvider>();
 
-		[Inject]
-		IServiceProvider ServiceProvider { get; set; }
+		public async ValueTask<bool> ValidateAsync()
+		{
+			CurrentEditContext.Validate();
+			foreach (IValidationProvider validationProvider in ValidationProviders)
+			{
+				await validationProvider.ValidationComplete;
+				Console.WriteLine("Provider completed validation");
+			}
+			return !CurrentEditContext.GetValidationMessages().Any();
+		}
 
 		public override async Task SetParametersAsync(ParameterView parameters)
 		{
@@ -36,6 +46,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 			foreach (Type providerType in Repository.All)
 			{
 				var validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
+				ValidationProviders.Add(validationProvider);
 				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider);
 			}
 		}

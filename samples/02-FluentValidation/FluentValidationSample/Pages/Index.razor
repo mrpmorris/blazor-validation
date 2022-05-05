@@ -2,7 +2,7 @@
 @using PeterLeslieMorris.Blazor.Validation.Extensions
 
 <EditForm Model=@Person OnSubmit=SubmitForm>
-	<PeterLeslieMorris.Blazor.Validation.Validate />
+	<PeterLeslieMorris.Blazor.Validation.Validate @ref=Validator />
 	<div class="mb-2 row">
 		<div class="col-3">
 			<label>Salutation</label>
@@ -65,15 +65,25 @@
 			</AddressEdit>
 		</div>
 	}
-	<button type="submit" class="mt-2 btn btn-primary btn-block mb-4 mt-4">Submit</button>
+	<button type="submit" class="mt-2 btn btn-primary btn-block mb-4 mt-4" disabled=@IsValidating>Submit</button>
 </EditForm>
 
 @code{
-	Models.Person Person = new Models.Person();
+	private bool IsValidating;
+	private Models.Person Person = new Models.Person();
+	private PeterLeslieMorris.Blazor.Validation.Validate Validator;
 
-	void SubmitForm(EditContext editContext)
+	async Task SubmitForm(EditContext editContext)
 	{
-		editContext.ValidateObjectTree();
+		IsValidating = true;
+		try
+		{
+			await Validator.ValidateAsync();
+		}
+		finally
+		{
+			IsValidating = false;
+		}
 	}
 
 	void DeleteAddress(Models.NamedAddress namedAddress)

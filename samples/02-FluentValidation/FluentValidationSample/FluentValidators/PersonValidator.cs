@@ -22,7 +22,7 @@ namespace FluentValidationSample.FluentValidators
 
 		private async Task<bool> LongRunningAsyncMethod(string arg1, CancellationToken arg2)
 		{
-			await Task.Delay(1000);
+			await Task.Delay(5_000);
 			if ("DR".Equals(arg1, StringComparison.InvariantCultureIgnoreCase))
 				return false;
 			return true;

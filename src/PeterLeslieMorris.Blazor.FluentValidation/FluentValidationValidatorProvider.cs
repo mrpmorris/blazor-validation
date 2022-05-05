@@ -4,16 +4,22 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Components.Forms;
 using PeterLeslieMorris.Blazor.Validation;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using PeterLeslieMorris.Blazor.Validation.Extensions;
 
 namespace PeterLeslieMorris.Blazor.FluentValidation
 {
 	public class FluentValidationValidatorProvider : IValidationProvider
 	{
+		public Task ValidationComplete => ValidationCompleteTaskSource.Task;
+
+		private SpinLock Locker = new SpinLock();
+		private TaskCompletionSource<object> ValidationCompleteTaskSource = new TaskCompletionSource<object>();
+
 		public void InitializeEditContext(
 			EditContext editContext,
 			IServiceProvider serviceProvider)
@@ -23,21 +29,66 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			if (serviceProvider == null)
 				throw new ArgumentNullException(nameof(serviceProvider));
 
+			ValidationCompleteTaskSource.SetResult(true);
+
 			var messages = new ValidationMessageStore(editContext);
 			editContext.OnValidationRequested +=
 				(sender, eventArgs) =>
 				{
-					_ = ValidateModel((EditContext)sender, messages, serviceProvider);
+					_ = KeepCountAsync(() => ValidateModelAsync((EditContext)sender, messages, serviceProvider));
 				};
 
 			editContext.OnFieldChanged +=
 				(sender, eventArgs) =>
 				{
-					_ = ValidateField(editContext, messages, eventArgs.FieldIdentifier, serviceProvider);
+					_ = KeepCountAsync(() => ValidateFieldAsync(editContext, messages, eventArgs.FieldIdentifier, serviceProvider));
 				};
 		}
 
-		private async Task ValidateModel(
+		private int EntryCount;
+
+		private async Task KeepCountAsync(Func<Task> validation)
+		{
+			bool validationWasAlreadyRunning = false;
+			Task<object> completionTask = null;
+			Locker.ExecuteLocked(() =>
+			{
+				completionTask = ValidationCompleteTaskSource.Task;
+				EntryCount++;
+				Console.WriteLine($"Starting validation level {EntryCount}");
+				if (EntryCount > 1)
+					validationWasAlreadyRunning = true;
+				else
+				{
+					ValidationCompleteTaskSource = new TaskCompletionSource<object>();
+					completionTask = ValidationCompleteTaskSource.Task;
+				}
+			});
+
+			if (validationWasAlreadyRunning)
+			{
+				await completionTask;
+				return;
+			}
+
+			try
+			{
+				await validation();
+			}
+			finally
+			{
+				TaskCompletionSource<object> completionSource = ValidationCompleteTaskSource;
+				Locker.ExecuteLocked(() =>
+				{
+					Console.WriteLine($"Ending validation level {EntryCount}");
+					EntryCount--;
+					if (EntryCount == 0)
+						completionSource.SetResult(null);
+				});
+			}
+		}
+
+		private async Task ValidateModelAsync(
 			EditContext editContext,
 			ValidationMessageStore messages,
 			IServiceProvider serviceProvider)
@@ -118,7 +169,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 			propertyName = propertyPathParts.Dequeue();
 		}
 
-		private async Task ValidateField(
+		private async Task ValidateFieldAsync(
 			EditContext editContext,
 			ValidationMessageStore messages,
 			FieldIdentifier fieldIdentifier,
@@ -134,7 +185,7 @@ namespace PeterLeslieMorris.Blazor.FluentValidation
 				throw new NullReferenceException($"{nameof(editContext)}.{nameof(editContext.Model)}");
 
 			var propertiesToValidate = new string[] { fieldIdentifier.FieldName };
-			var fluentValidationContext = 
+			var fluentValidationContext =
 				new ValidationContext<object>(
 					instanceToValidate: fieldIdentifier.Model,
 					propertyChain: new PropertyChain(),

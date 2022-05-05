@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Threading.Tasks;
 
 namespace PeterLeslieMorris.Blazor.Validation
 {
 	public class DataAnnotationsValidatorProvider : IValidationProvider
 	{
+		public Task ValidationComplete => Task.CompletedTask;
+
 		public void InitializeEditContext(
 			EditContext editContext,
 			IServiceProvider serviceProvider)
@@ -13,6 +16,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 			editContext.AddDataAnnotationsValidation();
 		}
 	}
+
 
 	public static class ValidationConfigurationDataAnnotationsExtensions
 	{
