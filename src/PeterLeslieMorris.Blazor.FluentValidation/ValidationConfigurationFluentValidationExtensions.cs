@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using PeterLeslieMorris.Blazor.FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace PeterLeslieMorris.Blazor.Validation
 				.SelectMany(x => x.Value)
 				.Distinct()
 				.ToList()
-				.ForEach(x => services.AddScoped(x));
+				.ForEach(x => services.TryAddScoped(x));
 
 			services.AddSingleton(repository);
 		}
