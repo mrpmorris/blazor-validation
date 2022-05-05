@@ -119,7 +119,7 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 		{
 #if (NETSTANDARD2_0 || NETSTANDARD2_1)
 			Object[] parameters = new object[] { fieldIdentifier, true };
-#elif (NET5_0)
+#elif (NET5_0_OR_GREATER)
 			Object[] parameters = new object[] { fieldIdentifier };
 #endif
 			EnsureGetFieldStateMethod(editContext);
@@ -130,7 +130,7 @@ namespace PeterLeslieMorris.Blazor.Validation.Extensions
 		{
 #if (NETSTANDARD2_0 || NETSTANDARD2_1)
 			var methodname = "GetFieldState";
-#elif (NET5_0)
+#elif (NET5_0_OR_GREATER)
 			var methodname = "GetOrAddFieldState";
 #endif
 
