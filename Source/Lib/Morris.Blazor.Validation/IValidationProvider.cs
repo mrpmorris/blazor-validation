@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using System;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public interface IValidationProvider
 	{

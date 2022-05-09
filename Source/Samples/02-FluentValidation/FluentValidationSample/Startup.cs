@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PeterLeslieMorris.Blazor.Validation;
+using Morris.Blazor.Validation;
 
 namespace FluentValidationSample
 {

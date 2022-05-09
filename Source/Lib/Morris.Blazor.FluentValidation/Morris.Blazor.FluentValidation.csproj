@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
+		<ProjectReference Include="..\Morris.Blazor.Validation\Morris.Blazor.Validation.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

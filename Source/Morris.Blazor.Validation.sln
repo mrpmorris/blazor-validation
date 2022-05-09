@@ -1,28 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29006.145
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.Validation", "PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj", "{07CE8E70-DF46-4A93-864B-1BBB64E52426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morris.Blazor.Validation", "Lib\Morris.Blazor.Validation\Morris.Blazor.Validation.csproj", "{07CE8E70-DF46-4A93-864B-1BBB64E52426}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeterLeslieMorris.Blazor.FluentValidation", "PeterLeslieMorris.Blazor.FluentValidation\PeterLeslieMorris.Blazor.FluentValidation.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morris.Blazor.FluentValidation", "Lib\Morris.Blazor.FluentValidation\Morris.Blazor.FluentValidation.csproj", "{9E544B03-8471-4C99-8405-C6D55ABAEFD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D40EFCC3-037E-40A4-9B7C-8A9E61ED3AB2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAnnotationsValidationSample", "..\samples\01-DataAnnotationsValidation\DataAnnotationsValidationSample\DataAnnotationsValidationSample.csproj", "{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAnnotationsValidationSample", "Samples\01-DataAnnotationsValidation\DataAnnotationsValidationSample\DataAnnotationsValidationSample.csproj", "{3B756D20-10A2-4F68-89CC-CB3F201F4CE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-DataAnnotations", "01-DataAnnotations", "{C76D2D7E-0AF1-483D-8C7C-96E05CE38AC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-FluentValidation", "02-FluentValidation", "{F3597B78-7306-40ED-8FF8-B2C6B1ED9539}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{451C13F4-69B5-4AB3-B1A8-008A112DE521}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{451C13F4-69B5-4AB3-B1A8-008A112DE521}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Directory.Build.props = Lib\Directory.Build.props
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationSample", "..\samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{11850E97-B92B-4436-B471-3D43A1802A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationSample", "Samples\02-FluentValidation\FluentValidationSample\FluentValidationSample.csproj", "{11850E97-B92B-4436-B471-3D43A1802A90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3D40341-FD91-4A62-8EAA-B3548AFD762A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		Directory.Build.props = Directory.Build.props
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject

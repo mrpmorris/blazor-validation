@@ -2,7 +2,7 @@
 using FluentValidation.Internal;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Components.Forms;
-using PeterLeslieMorris.Blazor.Validation;
+using Morris.Blazor.Validation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace PeterLeslieMorris.Blazor.FluentValidation
+namespace Morris.Blazor.FluentValidation
 {
 	public class FluentValidationValidatorProvider : IValidationProvider
 	{

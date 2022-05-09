@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public class ValidationProviderRepository : IValidationProviderRepository
 	{

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public interface IValidationProviderRepository
 	{

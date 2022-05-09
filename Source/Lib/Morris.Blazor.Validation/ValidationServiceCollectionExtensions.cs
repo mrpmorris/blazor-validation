@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public static class ValidationServiceCollectionExtensions
 	{

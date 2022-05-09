@@ -11,8 +11,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\PeterLeslieMorris.Blazor.Validation\PeterLeslieMorris.Blazor.Validation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Lib\Morris.Blazor.Validation\Morris.Blazor.Validation.csproj" />
+	</ItemGroup>
 
+  
 </Project>

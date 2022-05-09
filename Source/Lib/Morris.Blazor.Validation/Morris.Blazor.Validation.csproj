@@ -2,11 +2,11 @@
 
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
-		<LangVersion>7.3</LangVersion>
+		<LangVersion>10</LangVersion>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-		<PackageId>PeterLeslieMorris.Blazor.Validation</PackageId>
-		<Product>PeterLeslieMorris.Blazor.Validation</Product>
+		<PackageId>Morris.Blazor.Validation</PackageId>
+		<Product>Morris.Blazor.Validation</Product>
 		<Description>Validation for Blazor</Description>
 		<PackageTags>Blazor Validation</PackageTags>
 		<PackageIcon>blazor-validation.png</PackageIcon>
@@ -23,7 +23,6 @@
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 	  <None Include="blazor-validation.png">

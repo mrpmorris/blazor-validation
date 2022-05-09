@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace PeterLeslieMorris.Blazor.FluentValidation
+namespace Morris.Blazor.FluentValidation
 {
 	internal class FluentValidationRepository
 	{

@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using PeterLeslieMorris.Blazor.FluentValidation;
+using Morris.Blazor.FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public static class ValidationConfigurationFluentValidationExtensions
 	{

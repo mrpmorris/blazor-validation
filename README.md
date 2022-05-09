@@ -7,13 +7,13 @@ Blazor-Validation is a validation agnostic library for validating forms in Blazo
 
 ## Installation
 You can download the latest release / pre-release NuGet packages from the official NuGet pages:
-- [Blazor-Validation] [![NuGet version (PeterLeslieMorris.Blazor.Validation)](https://img.shields.io/nuget/v/PeterLeslieMorris.Blazor.Validation.svg?style=flat-square)](https://www.nuget.org/packages/PeterLeslieMorris.Blazor.Validation/)
-- [Blazor-FluentValidation] [![NuGet version (PeterLeslieMorris.Blazor.FluentValidation)](https://img.shields.io/nuget/v/PeterLeslieMorris.Blazor.FluentValidation.svg?style=flat-square)](https://www.nuget.org/packages/PeterLeslieMorris.Blazor.FluentValidation/) 
+- [Blazor-Validation] [![NuGet version (Morris.Blazor.Validation)](https://img.shields.io/nuget/v/Morris.Blazor.Validation.svg?style=flat-square)](https://www.nuget.org/packages/Morris.Blazor.Validation/)
+- [Blazor-FluentValidation] [![NuGet version (Morris.Blazor.FluentValidation)](https://img.shields.io/nuget/v/Morris.Blazor.FluentValidation.svg?style=flat-square)](https://www.nuget.org/packages/Morris.Blazor.FluentValidation/) 
 
 ## Getting started
- 1. Add a reference to PeterLeslieMorris.Blazor.Validation
- 2. Inside the `<EditForm>` in your razor files, add `<PeterLeslieMorris.Blazor.Validation.Validate/>`
- 3. In startup.cs add `using PeterLeslieMorris.Blazor.Validation` and then add the relevant validation in the `ConfigureServices` method.
+ 1. Add a reference to Morris.Blazor.Validation
+ 2. Inside the `<EditForm>` in your razor files, add `<Morris.Blazor.Validation.Validate/>`
+ 3. In startup.cs add `using Morris.Blazor.Validation` and then add the relevant validation in the `ConfigureServices` method.
 
 -  `services.AddFormValidation(config => config.AddDataAnnotationsValidation());`
 -  `services.AddFormValidation(config => config.AddFluentValidation(typeof(SomeValidator).Assembly));`
@@ -102,8 +102,8 @@ More sample projects will be added as the framework develops.
 - Initial public release
 
    [Microsoft aspdotnet blazor project]: <https://github.com/aspnet/Blazor>
-   [Blazor-Validation]: <https://www.nuget.org/packages/PeterLeslieMorris.Blazor.Validation/>
-   [Blazor-FluentValidation]: <https://www.nuget.org/packages/PeterLeslieMorris.Blazor.FluentValidation/>
+   [Blazor-Validation]: <https://www.nuget.org/packages/Morris.Blazor.Validation/>
+   [Blazor-FluentValidation]: <https://www.nuget.org/packages/Morris.Blazor.FluentValidation/>
    [Data Annotations Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/01-DataAnnotationsValidation/>
    [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/02-FluentValidation/>
    [Blazored FluentValidation]: <https://github.com/Blazored/FluentValidation>

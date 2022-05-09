@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 using System;
 using System.Threading.Tasks;
 
-namespace PeterLeslieMorris.Blazor.Validation
+namespace Morris.Blazor.Validation
 {
 	public class Validate : ComponentBase
 	{
