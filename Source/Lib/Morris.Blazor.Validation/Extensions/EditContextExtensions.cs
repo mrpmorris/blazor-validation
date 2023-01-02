@@ -115,24 +115,16 @@ namespace Morris.Blazor.Validation.Extensions
 			IsModifiedProperty.SetValue(fieldState, originalIsModified);
 		}
 
-		private static Object GetFieldState(EditContext editContext, FieldIdentifier fieldIdentifier)
+		private static object GetFieldState(EditContext editContext, FieldIdentifier fieldIdentifier)
 		{
-#if (NETSTANDARD2_0 || NETSTANDARD2_1)
-			Object[] parameters = new object[] { fieldIdentifier, true };
-#elif (NET5_0_OR_GREATER)
-			Object[] parameters = new object[] { fieldIdentifier };
-#endif
+			var parameters = new object[] { fieldIdentifier };
 			EnsureGetFieldStateMethod(editContext);
 			return GetFieldStateMethod.Invoke(editContext, parameters);
 		}
 
 		private static void EnsureGetFieldStateMethod(EditContext editContext)
 		{
-#if (NETSTANDARD2_0 || NETSTANDARD2_1)
-			var methodname = "GetFieldState";
-#elif (NET5_0_OR_GREATER)
 			var methodname = "GetOrAddFieldState";
-#endif
 
 			if (GetFieldStateMethod == null)
 			{

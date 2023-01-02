@@ -13,6 +13,9 @@ namespace Morris.Blazor.Validation
 		[Inject]
 		IValidationProviderRepository Repository { get; set; }
 
+		[Parameter]
+		public ValidationProperties ValidationProperties { get; set; }
+
 		[Inject]
 		IServiceProvider ServiceProvider { get; set; }
 
@@ -36,7 +39,7 @@ namespace Morris.Blazor.Validation
 			foreach (Type providerType in Repository.All)
 			{
 				var validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
-				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider);
+				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider, ValidationProperties);
 			}
 		}
 	}

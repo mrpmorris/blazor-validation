@@ -8,12 +8,13 @@ namespace Morris.Blazor.Validation
 	{
 		public void InitializeEditContext(
 			EditContext editContext,
-			IServiceProvider serviceProvider)
+			IServiceProvider serviceProvider,
+			ValidationProperties properties)
 		{
-#if NET6_0_OR_GREATER
-			editContext.EnableDataAnnotationsValidation();
+#if NET7_0_OR_GREATER
+			editContext.EnableDataAnnotationsValidation(serviceProvider);
 #else
-			editContext.AddDataAnnotationsValidation();
+			editContext.EnableDataAnnotationsValidation();
 #endif
 		}
 	}

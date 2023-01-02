@@ -5,6 +5,6 @@ namespace Morris.Blazor.Validation
 {
 	public interface IValidationProvider
 	{
-		void InitializeEditContext(EditContext editContext, IServiceProvider serviceProvider);
+		void InitializeEditContext(EditContext editContext, IServiceProvider serviceProvider, ValidationProperties properties);
 	}
 }

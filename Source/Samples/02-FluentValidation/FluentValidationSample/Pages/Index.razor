@@ -1,8 +1,11 @@
 ﻿@page "/"
+@using FluentValidationSample.FluentValidators
+@using Morris.Blazor.Validation
 @using Morris.Blazor.Validation.Extensions
+@using Morris.Blazor.FluentValidation
 
 <EditForm Model=@Person OnSubmit=SubmitForm>
-	<Morris.Blazor.Validation.Validate />
+	<Morris.Blazor.Validation.Validate ValidationProperties=@(ValidationProperties.Set.FluentValidator<PersonValidator>())/>
 	<div class="mb-2 row">
 		<div class="col-3">
 			<label>Salutation</label>

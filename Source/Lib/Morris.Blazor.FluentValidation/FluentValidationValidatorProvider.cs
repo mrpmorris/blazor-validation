@@ -4,7 +4,6 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Components.Forms;
 using Morris.Blazor.Validation;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -16,18 +15,20 @@ namespace Morris.Blazor.FluentValidation
 	{
 		public void InitializeEditContext(
 			EditContext editContext,
-			IServiceProvider serviceProvider)
+			IServiceProvider serviceProvider,
+			ValidationProperties properties)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
 			if (serviceProvider == null)
 				throw new ArgumentNullException(nameof(serviceProvider));
+			properties ??= ValidationProperties.Set;
 
 			var messages = new ValidationMessageStore(editContext);
 			editContext.OnValidationRequested +=
 				(sender, eventArgs) =>
 				{
-					_ = ValidateModel((EditContext)sender, messages, serviceProvider);
+					_ = ValidateModel((EditContext)sender, messages, serviceProvider, properties);
 				};
 
 			editContext.OnFieldChanged +=
@@ -40,7 +41,8 @@ namespace Morris.Blazor.FluentValidation
 		private async Task ValidateModel(
 			EditContext editContext,
 			ValidationMessageStore messages,
-			IServiceProvider serviceProvider)
+			IServiceProvider serviceProvider,
+			ValidationProperties properties)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
@@ -89,7 +91,7 @@ namespace Morris.Blazor.FluentValidation
 			Type modelType = model.GetType();
 			while (propertyPathParts.Count > 1)
 			{
-				var name = propertyPathParts.Dequeue();
+				string name = propertyPathParts.Dequeue();
 
 				string propertyIndexString = null;
 				int bracketIndex = name.IndexOf('[');
