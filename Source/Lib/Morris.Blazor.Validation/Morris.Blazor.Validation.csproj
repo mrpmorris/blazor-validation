@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+		<LangVersion>10</LangVersion>
+		<RazorLangVersion>3.0</RazorLangVersion>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<PackageId>Morris.Blazor.Validation</PackageId>
+		<Product>Morris.Blazor.Validation</Product>
+		<Description>Validation for Blazor</Description>
+		<PackageTags>Blazor Validation</PackageTags>
+		<PackageIcon>blazor-validation.png</PackageIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" Condition="'$(TargetFramework)' == 'net7.0'"/>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="blazor-validation.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
