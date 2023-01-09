@@ -104,6 +104,6 @@ More sample projects will be added as the framework develops.
    [Microsoft aspdotnet blazor project]: <https://github.com/aspnet/Blazor>
    [Blazor-Validation]: <https://www.nuget.org/packages/Morris.Blazor.Validation/>
    [Blazor-FluentValidation]: <https://www.nuget.org/packages/Morris.Blazor.FluentValidation/>
-   [Data Annotations Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/01-DataAnnotationsValidation/>
-   [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/samples/02-FluentValidation/>
+   [Data Annotations Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/Source/Samples/01-DataAnnotationsValidation//>
+   [FluentValidation Sample]: <https://github.com/mrpmorris/blazor-validation/tree/master/Source/Samples/02-FluentValidation/>
    [Blazored FluentValidation]: <https://github.com/Blazored/FluentValidation>
