@@ -15,7 +15,7 @@
 
 		<PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
 		<PackageIconUrl />
-		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
+		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<LangVersion>latest</LangVersion>
 		<RazorLangVersion>3.0</RazorLangVersion>
