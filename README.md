@@ -48,6 +48,13 @@ More sample projects will be added as the framework develops.
 
 ## What's new
 
+### New in 3.0.0 
+- Add OnTransformModel delegate to allow the model to be transformed before validation (This is useful when using endpoint-centric APIs)
+- Major change because it changes the signature of the public IValidationProvider interface.
+
+### New in 2.0.0
+- Add net7.0 target framework.
+
 ### New in 1.8.0
 - Use `Services.TryAddScoped` instead of `Services.AddScoped` for validators, in case 
   the consuming app has already registered validators with a different lifetime.
