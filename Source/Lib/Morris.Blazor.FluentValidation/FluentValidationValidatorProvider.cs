@@ -13,16 +13,22 @@ namespace Morris.Blazor.FluentValidation
 {
 	public class FluentValidationValidatorProvider : IValidationProvider
 	{
-		public void InitializeEditContext(
+		private Func<object, object> OnTransformModel { get; set; } = null;
+
+		public void InitializeEditContext
+		(
 			EditContext editContext,
 			IServiceProvider serviceProvider,
-			ValidationProperties properties)
+			ValidationProperties properties,
+			Func<object, object> transformModel = null
+		)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
 			if (serviceProvider == null)
 				throw new ArgumentNullException(nameof(serviceProvider));
 			properties ??= ValidationProperties.Set;
+			OnTransformModel = transformModel;
 
 			var messages = new ValidationMessageStore(editContext);
 			editContext.OnValidationRequested +=
@@ -56,9 +62,11 @@ namespace Morris.Blazor.FluentValidation
 			messages.Clear();
 			editContext.NotifyValidationStateChanged();
 
-			IEnumerable<IValidator> validators = GetValidatorsForObject(editContext.Model, serviceProvider);
+			object transformedModel = GetTransformedModel(editContext.Model);
 
-			var validationContext = new ValidationContext<object>(editContext.Model);
+			IEnumerable<IValidator> validators = GetValidatorsForObject(transformedModel, serviceProvider);
+
+			var validationContext = new ValidationContext<object>(transformedModel);
 
 			var validationResults = new List<ValidationResult>();
 			foreach (IValidator validator in validators)
@@ -70,12 +78,16 @@ namespace Morris.Blazor.FluentValidation
 			IEnumerable<ValidationFailure> validationFailures = validationResults.SelectMany(x => x.Errors);
 			foreach (var validationError in validationFailures)
 			{
-				GetParentObjectAndPropertyName(editContext.Model, validationError.PropertyName, out object parentObject, out string propertyName);
+				GetParentObjectAndPropertyName(transformedModel, validationError.PropertyName, out object parentObject, out string propertyName);
 				if (parentObject != null)
 					messages.Add(new FieldIdentifier(parentObject, propertyName), validationError.ErrorMessage);
 			}
 
 			editContext.NotifyValidationStateChanged();
+		}
+		private object GetTransformedModel(object model)
+		{
+			return OnTransformModel is not null ? OnTransformModel(model) : model;
 		}
 
 		private void GetParentObjectAndPropertyName(
@@ -120,11 +132,13 @@ namespace Morris.Blazor.FluentValidation
 			propertyName = propertyPathParts.Dequeue();
 		}
 
-		private async Task ValidateField(
+		private async Task ValidateField
+		(
 			EditContext editContext,
 			ValidationMessageStore messages,
 			FieldIdentifier fieldIdentifier,
-			IServiceProvider serviceProvider)
+			IServiceProvider serviceProvider
+		)
 		{
 			if (editContext == null)
 				throw new ArgumentNullException(nameof(editContext));
@@ -135,10 +149,11 @@ namespace Morris.Blazor.FluentValidation
 			if (editContext.Model == null)
 				throw new NullReferenceException($"{nameof(editContext)}.{nameof(editContext.Model)}");
 
+			object transformedModel = GetTransformedModel(editContext.Model);
 			var propertiesToValidate = new string[] { fieldIdentifier.FieldName };
-			var fluentValidationContext = 
+			var fluentValidationContext =
 				new ValidationContext<object>(
-					instanceToValidate: fieldIdentifier.Model,
+					instanceToValidate: transformedModel,
 					propertyChain: new PropertyChain(),
 					validatorSelector: new MemberNameValidatorSelector(propertiesToValidate)
 				);
@@ -146,7 +161,7 @@ namespace Morris.Blazor.FluentValidation
 			messages.Clear(fieldIdentifier);
 			editContext.NotifyValidationStateChanged();
 
-			IEnumerable<IValidator> validators = GetValidatorsForObject(fieldIdentifier.Model, serviceProvider);
+			IEnumerable<IValidator> validators = GetValidatorsForObject(transformedModel, serviceProvider);
 			var validationResults = new List<ValidationResult>();
 
 			foreach (IValidator validator in validators)

@@ -18,6 +18,8 @@ namespace Morris.Blazor.Validation
 
 		[Inject]
 		IServiceProvider ServiceProvider { get; set; }
+		[Parameter]
+		public Func<object, object> OnTransformModel { get; set; } = null;
 
 		public override async Task SetParametersAsync(ParameterView parameters)
 		{
@@ -39,7 +41,7 @@ namespace Morris.Blazor.Validation
 			foreach (Type providerType in Repository.All)
 			{
 				var validationProvider = (IValidationProvider)ServiceProvider.GetService(providerType);
-				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider, ValidationProperties);
+				validationProvider.InitializeEditContext(CurrentEditContext, ServiceProvider, ValidationProperties, OnTransformModel);
 			}
 		}
 	}
