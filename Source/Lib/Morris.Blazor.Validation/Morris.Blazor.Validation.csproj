@@ -2,8 +2,6 @@
 
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
-		<LangVersion>10</LangVersion>
-		<RazorLangVersion>3.0</RazorLangVersion>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 		<PackageId>Morris.Blazor.Validation</PackageId>
 		<Product>Morris.Blazor.Validation</Product>

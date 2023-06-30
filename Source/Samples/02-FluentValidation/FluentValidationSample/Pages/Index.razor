@@ -5,7 +5,7 @@
 @using Morris.Blazor.FluentValidation
 
 <EditForm Model=@Person OnSubmit=SubmitForm>
-	<Morris.Blazor.Validation.Validate ValidationProperties=@(ValidationProperties.Set.FluentValidator<PersonValidator>())/>
+	<Morris.Blazor.Validation.Validate ValidationProperties=@(ValidationProperties.Set.FluentValidator<PersonValidator>()) OnTransformModel=OnTransformModel />
 	<div class="mb-2 row">
 		<div class="col-3">
 			<label>Salutation</label>
@@ -74,6 +74,13 @@
 @code{
 	Models.Person Person = new Models.Person();
 
+	private object OnTransformModel(object model)
+	{
+		// Confirm that the model is of the expected type
+		// Do transformations here
+		// return the transformed model
+        return model;
+    }
 	void SubmitForm(EditContext editContext)
 	{
 		editContext.ValidateObjectTree();

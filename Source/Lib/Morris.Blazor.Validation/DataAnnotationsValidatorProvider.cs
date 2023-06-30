@@ -6,10 +6,13 @@ namespace Morris.Blazor.Validation
 {
 	public class DataAnnotationsValidatorProvider : IValidationProvider
 	{
-		public void InitializeEditContext(
+		public void InitializeEditContext
+		(
 			EditContext editContext,
 			IServiceProvider serviceProvider,
-			ValidationProperties properties)
+			ValidationProperties properties,
+			Func<object, object> transformModel = null
+		)
 		{
 #if NET7_0_OR_GREATER
 			editContext.EnableDataAnnotationsValidation(serviceProvider);

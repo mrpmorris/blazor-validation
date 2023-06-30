@@ -2,9 +2,9 @@
 
 	<PropertyGroup>
 
-		<Version>2.0.0</Version>
-		<AssemblyVersion>2.0.0.0</AssemblyVersion>
-		<FileVersion>2.0.0.0</FileVersion>
+		<Version>3.0.0</Version>
+		<AssemblyVersion>3.0.0.0</AssemblyVersion>
+		<FileVersion>3.0.0.0</FileVersion>
 
 		<Authors>Peter Morris</Authors>
 		<Company />
@@ -15,19 +15,18 @@
 
 		<PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
 		<PackageIconUrl />
-		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation</RepositoryUrl>
+		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-
-		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
-		<SignAssembly>true</SignAssembly>
-		<DelaySign>false</DelaySign>
-
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
+		<LangVersion>latest</LangVersion>
+		<RazorLangVersion>3.0</RazorLangVersion>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>
+		<DelaySign>true</DelaySign>
 	</PropertyGroup>
 
 </Project>
