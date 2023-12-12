@@ -6,6 +6,7 @@
 		<PackageId>Morris.Blazor.Validation</PackageId>
 		<Product>Morris.Blazor.Validation</Product>
 		<Description>Validation for Blazor</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>Blazor Validation</PackageTags>
 		<PackageIcon>blazor-validation.png</PackageIcon>
 	</PropertyGroup>
@@ -15,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" Condition="'$(TargetFramework)' == 'net8.0'"/>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" Condition="'$(TargetFramework)' == 'net7.0'"/>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" Condition="'$(TargetFramework)' == 'net6.0'"/>
 	</ItemGroup>
