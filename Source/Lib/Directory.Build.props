@@ -2,23 +2,22 @@
 
 	<PropertyGroup>
 
-		<Version>3.0.0</Version>
-		<AssemblyVersion>3.0.0.0</AssemblyVersion>
-		<FileVersion>3.0.0.0</FileVersion>
+		<Version>4.0.0</Version>
+		<AssemblyVersion>4.0.0.0</AssemblyVersion>
+		<FileVersion>4.0.0.0</FileVersion>
 
 		<Authors>Peter Morris</Authors>
 		<Company />
 		<Copyright>Peter Morris</Copyright>
 		<PackageLicenseFile></PackageLicenseFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 
 		<PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
 		<PackageIconUrl />
 		<RepositoryUrl>https://github.com/mrpmorris/blazor-validation.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<LangVersion>latest</LangVersion>
-		<RazorLangVersion>3.0</RazorLangVersion>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
