@@ -48,6 +48,9 @@ More sample projects will be added as the framework develops.
 
 ## What's new
 
+### New in 3.1.0
+- Support for .Net 8
+
 ### New in 3.0.0 
 - Add OnTransformModel delegate to allow the model to be transformed before validation (This is useful when using endpoint-centric APIs)
 - Major change because it changes the signature of the public IValidationProvider interface.
