@@ -24,9 +24,6 @@
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyOriginatorKeyFile>MrPMorris.snk</AssemblyOriginatorKeyFile>
-		<SignAssembly>true</SignAssembly>
-		<DelaySign>true</DelaySign>
 	</PropertyGroup>
 
 </Project>
