@@ -7,12 +7,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.x'
 
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      
       - name: Build
         run: dotnet build --configuration Release -p:Version=${{ github.event.release.tag_name }} -p:AssemblyVersion=${{ github.event.release.tag_name }} -p:FileVersion=${{ github.event.release.tag_name }}
         working-directory: ./Source
