@@ -18,12 +18,11 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       
       - name: Build
-        run: dotnet build --configuration Release -p:Version=${{ github.event.release.tag_name }} -p:AssemblyVersion=${{ github.event.release.tag_name }} -p:FileVersion=${{ github.event.release.tag_name }}
+        run: dotnet build ./Source/ --configuration Release -p:Version=${{ github.event.release.tag_name }} -p:AssemblyVersion=${{ github.event.release.tag_name }} -p:FileVersion=${{ github.event.release.tag_name }}
         working-directory: ./Source
         
       - name: Pack
-        run: dotnet pack --configuration Release --no-build -p:Version=${{ github.event.release.tag_name }} -p:AssemblyVersion=${{ github.event.release.tag_name }} -p:FileVersion=${{ github.event.release.tag_name }} -o ./artifacts     
-        working-directory: ./Source
+        run: dotnet pack ./Source/ --configuration Release --no-build -p:Version=${{ github.event.release.tag_name }} -p:AssemblyVersion=${{ github.event.release.tag_name }} -p:FileVersion=${{ github.event.release.tag_name }} -o ./artifacts     
           
       - name: Push to NuGet
         run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
