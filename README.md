@@ -48,6 +48,9 @@ More sample projects will be added as the framework develops.
 
 ## What's new
 
+### New in 3.1.1
+- Support for .net 8 and 9 only
+
 ### New in 3.1.0
 - Support for .Net 8
 
