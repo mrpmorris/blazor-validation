@@ -7,7 +7,7 @@
 		<Copyright>Peter Morris</Copyright>
 		<PackageLicenseFile></PackageLicenseFile>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
 
 		<PackageProjectUrl>https://github.com/mrpmorris/blazor-validation</PackageProjectUrl>
 		<PackageIconUrl />
